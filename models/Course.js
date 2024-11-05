@@ -1,11 +1,11 @@
 // models/courseModel.js
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = require("../config/dbConfig");
-const Student = require("./studentModel");
-const UserCourseModal = require("./userCourseModel");
+const Student = require("./Student");
+const StudentCourse = require("./StudentCourse");
 
 const Course = sequelize.define(
-  "courseModal",
+  "Course",
   {
     course_id: {
       type: DataTypes.INTEGER,
@@ -43,10 +43,5 @@ const Course = sequelize.define(
     timestamps: false,
   }
 );
-
-Course.belongsToMany(Student, {
-  through: UserCourseModal,
-  foreignKey: "course_id",
-});
 
 module.exports = Course;

@@ -1,10 +1,11 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = require("../config/dbConfig");
-const Profile = require("./profileModal");
-const Course = require("./courseModal");
+const Profile = require("./Profile");
+const Course = require("./Course");
+const StudentCourse = require("./StudentCourse");
 
 const Student = sequelize.define(
-  "StudentModel",
+  "Student",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -44,8 +45,13 @@ Student.hasOne(Profile, {
 });
 
 Student.belongsToMany(Course, {
-  through: "userCourseModal",
+  through: StudentCourse,
   foreignKey: "student_id",
+});
+
+Course.belongsToMany(Student, {
+  through: StudentCourse,
+  foreignKey: "course_id",
 });
 
 module.exports = Student;

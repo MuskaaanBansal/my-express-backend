@@ -2,13 +2,18 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = require("../config/dbConfig");
 
-const UserCourseModal = sequelize.define(
-  "userCourseModal",
+const StudentCourse = sequelize.define(
+  "StudentCourse",
   {
-    course_id: {
+    id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
+    },
+    course_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+
     },
     student_id: {
       type: DataTypes.INTEGER,
@@ -16,9 +21,9 @@ const UserCourseModal = sequelize.define(
     },
   },
   {
-    tableName: "userCourses",
+    tableName: "studentcourse",
     timestamps: false,
   }
 );
 
-module.exports = UserCourseModal;
+module.exports = StudentCourse;

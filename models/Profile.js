@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../config/dbConfig");
 
 const StudentProfile = sequelize.define(
-  "profileModal",
+  "Profile",
   {
     profile_id: {
       type: DataTypes.INTEGER,

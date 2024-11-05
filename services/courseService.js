@@ -1,4 +1,4 @@
-const Courses = require("../models/courseModal");
+const Courses = require("../models/Course");
 
 exports.getAllCourses = async () => {
   return await Courses.findAll();

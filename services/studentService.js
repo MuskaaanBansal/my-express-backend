@@ -1,5 +1,5 @@
-const Student = require("../models/studentModel");
-const profile = require("../models/profileModal");
+const Student = require("../models/Student");
+const Profile = require("../models/Profile");
 
 exports.getAllStudents = async () => {
   return await Student.findAll();
@@ -13,7 +13,7 @@ exports.getStudentProfileById = async (id) => {
   const studentProfile = await Student.findByPk(id, {
     include: [
       {
-        model: profile,
+        model: Profile,
         attributes: { exclude: ["address", "id"] },
       },
     ],
