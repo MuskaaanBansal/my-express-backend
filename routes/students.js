@@ -12,4 +12,7 @@ router.delete("/:id", studentController.deleteStudent);
 // get profile of student
 router.get("/:id/profile", studentController.getStudentProfileById);
 
+// get all courses of student
+router.get("/:id/courses", studentController.getAllStudentCourses);
+
 module.exports = router;

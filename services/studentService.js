@@ -1,5 +1,6 @@
 const Student = require("../models/Student");
 const Profile = require("../models/Profile");
+const Course = require("../models/Course");
 
 exports.getAllStudents = async () => {
   return await Student.findAll();
@@ -42,4 +43,16 @@ exports.deleteStudent = async (id) => {
     return true;
   }
   return false;
+};
+
+exports.getStudentCourses = async (id) => {
+  return await Student.findByPk(id, {
+    include: [
+      {
+        model: Course,
+        through: { attributes: [] },
+      },
+    ],
+    attributes: { exclude: ["id"] },
+  });
 };
